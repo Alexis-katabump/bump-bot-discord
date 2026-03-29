@@ -1,0 +1,5 @@
+# Fichiers d'environnement (Mots de passe, tokens...)
+.env
+
+# Dépendances Node.js (inutile de les envoyer, elles sont trop grosses)
+node_modules/

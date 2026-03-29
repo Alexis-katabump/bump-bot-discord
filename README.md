@@ -10,12 +10,9 @@ Exobump est un bot Discord qui permet aux utilisateurs de promouvoir leurs serve
 
 ## Fonctionnalités
 
-- **Bump de Serveur** : Envoyez des messages promotionnels pour votre serveur.
-- **Configuration de Bump** : Configurez la description et la bannière de votre serveur pour les bumps.
+- **Tableau de Bord Interactif** : Configurez votre bot (activation, rappels, description, bannière, salon) depuis un seul panel interactif.
 - **Statistiques** : Suivez les statistiques de bumps, de votes, et de vues publicitaires.
-- **Rappels** : Activez ou désactivez les rappels pour bump votre serveur.
 - **Classements** : Voir les meilleurs serveurs et utilisateurs en termes de bumps.
-- **Gestion des Canaux** : Définissez le canal où les bumps doivent être envoyés.
 - **Système de Niveaux** : Gagnez de l'XP et montez de niveau en bumpant votre serveur.
 - **Commandes Slash** : Utilisation de commandes slash pour interagir avec le bot.
 
@@ -50,13 +47,10 @@ MYSQL_DATABASE=VOTRE_BASE_DE_DONNEES_MYSQL
 Le bot utilise des commandes slash pour interagir avec les utilisateurs. Voici les commandes disponibles :
 
 - `/bump` : Envoyer un bump à tous les serveurs connectés.
-- `/ping_config` : Activer ou désactiver le rappel pour bump.
-- `/bump_toggle` : Activer ou désactiver le bot sur ce serveur (admin uniquement).
+- `/bump_config` : Ouvre le **Tableau de Bord Interactif** pour paramétrer le bot sur votre serveur (activation, salon d'envoi, rappels, description, bannière) (admin uniquement).
+- `/bump_preview` : Voir un aperçu du bump (admin uniquement).
 - `/top_server` : Voir les meilleurs serveurs bumpés.
 - `/top_user` : Voir les meilleurs utilisateurs bumpers.
-- `/bump_config` : Configurer la description et le lien bannière (admin uniquement).
-- `/bump_set_channel` : Définir le salon où les bumps doivent être envoyés (admin uniquement).
-- `/bump_preview` : Voir un aperçu du bump (admin uniquement).
 - `/stats_bump` : Afficher les statistiques détaillées des bumps.
 - `/vote` : Voter pour le serveur.
 - `/help` : Affiche la liste des commandes disponibles.
@@ -65,11 +59,10 @@ Le bot utilise des commandes slash pour interagir avec les utilisateurs. Voici l
 ## Utilisation
 
 1. Invitez le bot sur votre serveur Discord en utilisant le lien OAuth2 généré dans le [Portail Développeur Discord](https://discord.com/developers/applications).
-2. Utilisez la commande `/bump_config` pour configurer la description et la bannière de votre serveur.
-3. Utilisez la commande `/bump_set_channel` pour définir le canal où les bumps doivent être envoyés.
-4. Utilisez la commande `/bump` pour envoyer un bump promotionnel pour votre serveur.
-5. Utilisez la commande `/vote` : pour envoyer un vote pour votre serveur.
-6. Utilisez les autres commandes pour gérer les rappels, voir les statistiques, et plus encore.
+2. Utilisez la commande `/bump_config` pour ouvrir le tableau de bord interactif et paramétrer entièrement le bot (salon d'envoi, description, bannière, rappels...).
+3. Utilisez la commande `/bump` pour envoyer un bump promotionnel vers tous les autres serveurs du réseau.
+4. Utilisez la commande `/vote` pour envoyer un vote pour votre serveur.
+5. Utilisez les autres commandes pour voir les statistiques ou le classement.
 
 ## Contribution
 
