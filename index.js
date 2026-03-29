@@ -321,28 +321,11 @@ async function createInviteIfNeeded(guild) {
     }
 }
 
-const rateLimit = new Collection();
-const MAX_COMMANDS = 5;
-const TIME_WINDOW = 60000;
 
-function checkRateLimit(userId) {
-    const now = Date.now();
-    if (!rateLimit.has(userId)) {
-        rateLimit.set(userId, [now]);
-        return false;
-    }
-    const timestamps = rateLimit.get(userId);
-    const filteredTimestamps = timestamps.filter(timestamp => now - timestamp < TIME_WINDOW);
-    rateLimit.set(userId, [...filteredTimestamps, now]);
-    return filteredTimestamps.length >= MAX_COMMANDS;
-}
 
 async function handleInteraction(interaction) {
-    if (!interaction.isCommand() && !interaction.isModalSubmit()) return;
-    const { commandName, guildId, user } = interaction;
-    if (checkRateLimit(user.id)) {
-        return interaction.reply({ content: '<:Erreur:1343303750336385185> Vous avez atteint la limite de commandes. Veuillez réessayer plus tard.', flags: [MessageFlags.Ephemeral] });
-    }
+    if (!interaction.isCommand() && !interaction.isModalSubmit() && !interaction.isMessageComponent()) return;
+    const { commandName, guildId } = interaction;
 
     // Initialize missing server data if it doesn't exist
     if (!data.servers[guildId]) {
@@ -387,6 +370,15 @@ async function handleInteraction(interaction) {
                 await bumpConfigCommand.executeModal(interaction, context);
             } catch (error) {
                 console.error(`⚠️ Erreur lors de l'exécution du modal bump_config:`, error);
+            }
+        }
+    } else if (interaction.isMessageComponent() && interaction.customId.startsWith('bump_config_')) {
+        const bumpConfigCommand = client.commands.get('bump_config');
+        if (bumpConfigCommand && bumpConfigCommand.executeComponent) {
+            try {
+                await bumpConfigCommand.executeComponent(interaction, context);
+            } catch (error) {
+                console.error(`⚠️ Erreur lors de l'exécution du composant bump_config:`, error);
             }
         }
     }
